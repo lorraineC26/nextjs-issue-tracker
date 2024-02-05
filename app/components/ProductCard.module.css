@@ -1,0 +1,7 @@
+/* cannot use - when naming -> will cause problem when improting at .tsx, since it's improted as obj
+*Use camelCase
+*/
+.card {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
