@@ -10,7 +10,7 @@ interface User {
 }
 
 const UsersPage = async() => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const res = await fetch('https://jsonplaceholder.typicode.com/users', {next: {revalidate: 10}}); // fetch fresh data every 10 sec
   const users: User[] = await res.json(); // annotate the type as a User array
 
 
