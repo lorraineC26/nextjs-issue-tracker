@@ -4,7 +4,7 @@ import AddToCart from './AddToCart';
 const ProuductCard = () => {
   return (
     <div>
-      <AddToCart/>
+      <AddToCart />
     </div>
 
   )
