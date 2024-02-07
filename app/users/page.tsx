@@ -2,35 +2,15 @@
 // everything here will be render at "/users" page
 
 import React from 'react'
-
-// define the shape of the user objects
-interface User {
-  id: number;
-  name: string;
-  email:string;
-}
+import UserTable from './userTable';
 
 const UsersPage = async() => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users', {cache: 'no-store'}); //disable caching
-  const users: User[] = await res.json(); // annotate the type as a User array
 
 
   return (
     <>
       <h1>Users</h1>
-      <table className='table table-bordered'>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => <tr key={user.id}>
-            <td>{user.name}</td>
-            <td>{user.email}</td></tr>)}
-        </tbody>
-      </table>
+      <UserTable/>
     </>
   )
 }
