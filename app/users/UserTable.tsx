@@ -9,7 +9,7 @@ interface User {
 
 const UserTable = async() => {
   const res = await fetch('https://jsonplaceholder.typicode.com/users', {cache: 'no-store'}); //disable caching
-  const users: User[] = await res.json(); // annotate the type as a User array
+  const users: User[] = await res.json(); // annotate the type as a custom User array
 
   return (
     <table className='table table-bordered'>
