@@ -4,10 +4,10 @@ interface Props {
   params: { id: number}
 }
 
-// destructure pramas and grab id property
-const UserDetailPage = (props: Props) => {
+// destructure props and grab params --> furthure destructure params
+const UserDetailPage = ({ params: { id }}: Props) => {
   return (
-    <div>UserDetailPage</div>
+    <div>UserDetailPage {id} </div>
   )
 }
 
