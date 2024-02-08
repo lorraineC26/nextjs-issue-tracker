@@ -2,7 +2,7 @@
 // everything here will be render at "/users" page
 
 import React from 'react'
-import UserTable from './userTable';
+import UserTable from './UserTable';
 
 const UsersPage = async() => {
 
