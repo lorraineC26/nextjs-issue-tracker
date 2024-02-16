@@ -1,18 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function GET(request: NextRequest) { // thought `request` params here is not used, but we have to have it to prevent caching
+export function GET(request: NextRequest) {
+  // thought `request` params here is not used, but we have to have it to prevent caching
   // in real world: fetch usres from a db
 
   return NextResponse.json([
-    {id: 1, name: 'Lorraine'},
-    {id: 2, name: 'Qinyi'},
+    { id: 1, name: "Lorraine" },
+    { id: 2, name: "Qinyi" },
   ]);
 }
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  //Validate
+  // Validate
   // if invalid, return 400
   // else, return data
-  return NextResponse.json({id: 1, name: body.name});
+
+  if (!body.name) {
+    return NextResponse.json({ error: "Name is required" }, { status: 400 });
+  }
+
+  return NextResponse.json({ id: 1, name: body.name }, { status: 201 }); // usually use 201 to indicate an obj is created
 }
