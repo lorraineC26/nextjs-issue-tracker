@@ -20,29 +20,46 @@ export function GET(
   // else return data
 
   if (params.id > 10) {
-    return NextResponse.json({error: 'User not found'}, {status: 404})
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  return NextResponse.json({id: 1, name: 'Lorraine'})
+  return NextResponse.json({ id: 1, name: "Lorraine" });
 }
 
-
 // we should also access to the route parameter
-export async function PUT(request: NextRequest, { params }: { params: { id: number } }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: number } }
+) {
   // validate the request body
   // if invalid, return 404
   const body = await request.json();
-  if (! body.name) {
-    return NextResponse.json({error: 'Name is reuqired'}, {status: 400})
+  if (!body.name) {
+    return NextResponse.json({ error: "Name is reuqired" }, { status: 400 });
   }
 
   // fetch the user with the given id
   // if doesn't exist, return 404
   if (params.id > 10) {
-    return NextResponse.json({error: 'User not found'}, {status: 404})
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
   // Update the user in db
   // return the updated user
-  return NextResponse.json({id: 1, name: body.name})
+  return NextResponse.json({ id: 1, name: body.name });
+}
+
+export function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: number } }
+) {
+  //fetch user from db
+  //if not found, return 404
+  if (params.id > 10) {
+    return NextResponse.json({error: 'User not found'}, {status: 404})
+  }
+
+  //delete user form db
+  //return 200
+  return NextResponse.json({});
 }
