@@ -1,5 +1,6 @@
 import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
+import schema from "../schema";
 
 // interface Props {
 //   params: { id: number };
@@ -34,8 +35,9 @@ export async function PUT(
   // validate the request body
   // if invalid, return 404
   const body = await request.json();
-  if (!body.name) {
-    return NextResponse.json({ error: "Name is reuqired" }, { status: 400 });
+  const validation = schema.safeParse(body);
+  if (!validation.success) {
+    return NextResponse.json(validation.error.errors, { status: 400 });
   }
 
   // fetch the user with the given id
